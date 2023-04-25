@@ -120,7 +120,9 @@ public class BankAccount {
     // this method will subtract the fee from the balance
     // Netflix subscription is $12.99
     public void monthlyFee(double fee) {
+        this.balance -= fee;
         withdraw(fee);
+
     }
 
     // Create a method that will print a menu to the user
@@ -208,4 +210,41 @@ public class BankAccount {
         System.out.println("Total Amount after " + time + " years is: $" + roundedAmount);
     }
 
+    /*Overdraft method
+    The Overdraft Method should be used when I withdraw money
+    and if I have $0 or less in my account it will charge me a
+    fee of $35. It should also see if the amount withdrawn puts me
+    in the negative and prompt the user if this is okay and warn them
+    that they will be charged a fee.
+
+    Hint 1: You will need a method with parameters for the bank account
+    as well as the amount to withdraw
+
+    Hint 2: You can use the withdraw method in the overdraft method or vice
+    versa depending on your implementation.
+
+    Hint 3: You will need to do some logic to check if the balance is less than
+    0 or if the withdraw would bring my balance to negative.
+        remember this is the format for if statements:
+        if
+        else if
+        else if
+        else
+    Hint 4: Method should look something like overDraft(BankAccount bank, double value)*/
+    public void overDraft(BankAccount bank, double value) {
+        Scanner input = new java.util.Scanner(System.in);
+        if (bank.getbalance() < 0) {
+            System.out.println("You are in the negative, would you like to continue? (Y/N)");
+            String choice = input.nextLine();
+            if (choice.equalsIgnoreCase("Y")) {
+                bank.withdraw(value);
+                bank.printBalance();
+            } else {
+                System.out.println("Thank you for banking with Appas Bank");
+            }
+        } else {
+            bank.withdraw(value);
+            bank.printBalance();
+        }
+    }
 }
