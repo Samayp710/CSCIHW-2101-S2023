@@ -72,6 +72,16 @@ public class Arrays {
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
         '!', '@', '#', '$', '%', '^', '&', '*', '(', ')','<','>','/','?'};
         char[] pass = password.toCharArray();
+        for(char c : alphabet){
+            for(char p : pass){
+                if(c == p){
+                    answer += c;
+                    System.out.println(answer);
+                }
+            }
+        }
+        return answer;
+       
     }
 
     // Create a method that will sort an Array of integers from smallest to greatest.
@@ -113,8 +123,8 @@ public class Arrays {
 
     public static void main(String[] args) {
         // Tester main method for your methods
-        //Arraysums();
-        System.out.println(bruteForce("ZZZZ"));
+        Arraysums();
+        bruteForce("ZZZZ");
         sorter(new int[]{9,10,2,5,3,4,7,8});
     }
 
